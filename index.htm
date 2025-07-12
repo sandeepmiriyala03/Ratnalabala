@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ratnalabala</title>
+  <title>Ratanalabala</title>
   <style>
     body {
       margin: 0;
@@ -76,7 +76,7 @@
 <body>
 
   <div class="slideshow-container">
-    <img id="slide" src="images/1.png" alt="రత్నలబాల 1" />
+    <img id="slide" src="images/logo.png" alt="రత్నలబాల " />
     <div class="caption" id="caption">ఇది చిత్రం 1 వివరణ</div>
     <a class="prev" onclick="plusSlides(-1)">❮ Prev</a>
     <a class="next" onclick="plusSlides(1)">Next ❯</a>
@@ -88,6 +88,7 @@
     // Slideshow logic
     let slideIndex = 0;
     const slides = [
+      { src: 'images/logo.png', alt: 'రత్నలబాల', caption: 'రత్నలబాల' },
       { src: 'images/1.png', alt: 'రత్నలబాల 1', caption: 'రత్నలబాల' },
       { src: 'images/2.png', alt: 'రత్నలబాల 2', caption: 'రత్నలబాల' },
       { src: 'images/3.png', alt: 'రత్నలబాల 3', caption: 'రత్నలబాల' },
@@ -108,7 +109,7 @@
     }
     setInterval(() => {
       plusSlides(1);
-    }, 4000);
+    }, 5000);
     showSlide(slideIndex);
     // Visitor counter logic
     let visits = localStorage.getItem("teluguVisits") || 0;
