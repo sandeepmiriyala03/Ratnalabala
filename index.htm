@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ratanalabala</title>
+  <title>రత్నలబాల</title>
   <style>
     body {
       margin: 0;
@@ -15,6 +15,22 @@
       padding: 20px;
       font-family: sans-serif;
       flex-direction: column;
+      color: white;
+      transition: background 0.5s ease;
+    }
+    body.dark-mode {
+      background: #111;
+      color: #eee;
+    }
+    .about {
+      max-width: 800px;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: center;
     }
     .slideshow-container {
       width: 100%;
@@ -30,6 +46,11 @@
       width: 100%;
       height: auto;
       display: block;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slideshow-container img.active {
+      opacity: 1;
     }
     .caption {
       background: rgba(0,0,0,0.5);
@@ -66,26 +87,94 @@
       background: rgba(0,0,0,0.8);
     }
     .visit-counter {
-      color: white;
       text-align: center;
       font-size: 1.5em;
       margin-top: 20px;
+    }
+    .feedback {
+      max-width: 800px;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .feedback a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+    .feedback a:hover {
+      text-decoration: underline;
+    }
+    .btn {
+      background: #ffd700;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #e2b607;
+    }
+    @media (max-width: 600px) {
+      .about {
+        font-size: 1.1rem;
+        padding: 15px;
+      }
+      .caption {
+        font-size: 1.2rem;
+        padding: 10px;
+      }
+      .prev, .next {
+        font-size: 16px;
+        padding: 10px;
+      }
+      .btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+      .visit-counter {
+        font-size: 1.2em;
+      }
+      .feedback {
+        font-size: 1.1rem;
+        padding: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <button class="btn" onclick="toggleDarkMode()">🌙 డార్క్ మోడ్ టాగిల్</button>
+
+  <div class="about">
+    నా పేరు సందీప్ మిరియాల. ఆఫీసు తర్వాత <strong>రత్నలబాల</strong> ప్రాజెక్ట్ చేస్తున్నాను. 
+    అది నా తాత వెంకట రత్నం గారి తెలుగు పుస్తకం ప్రేరణతో. 
+    AI తో డిజిటల్ చేస్తూ, GitHub Pagesలో వెబ్‌సైట్ హోస్ట్ చేస్తున్నాను.
+  </div>
+
   <div class="slideshow-container">
-    <img id="slide" src="images/logo.png" alt="రత్నలబాల " />
-    <div class="caption" id="caption">ఇది చిత్రం 1 వివరణ</div>
+    <img id="slide" src="images/logo.png" alt="రత్నలబాల" />
+    <div class="caption" id="caption">రత్నలబాల</div>
     <a class="prev" onclick="plusSlides(-1)">❮ Prev</a>
     <a class="next" onclick="plusSlides(1)">Next ❯</a>
   </div>
 
   <div class="visit-counter" id="visitCounter"></div>
 
+  <div class="feedback">
+    <h2>మీ ఫీడ్‌బ్యాక్ ఇవ్వండి</h2>
+    <p>మీ ఫీడ్‌బ్యాక్‌ను ఈ ఈమెయిల్‌కి పంపండి:</p>
+    <p>📧 <a href="mailto:vanisandeep@gmail.com">vanisandeep@gmail.com</a></p>
+  </div>
+
   <script>
-    // Slideshow logic
     let slideIndex = 0;
     const slides = [
       { src: 'images/logo.png', alt: 'రత్నలబాల', caption: 'రత్నలబాల' },
@@ -94,29 +183,40 @@
       { src: 'images/3.png', alt: 'రత్నలబాల 3', caption: 'రత్నలబాల' },
       { src: 'images/4.png', alt: 'రత్నలబాల 4', caption: 'రత్నలబాల' },
       { src: 'images/5.png', alt: 'రత్నలబాల 5', caption: 'రత్నలబాల' },
-      { src: 'images/6.png', alt: 'రత్నలబాల 6', caption: 'రత్నలబాల' },
+      { src: 'images/6.png', alt: 'రత్నలబాల 6', caption: 'రత్నలబాల' }
     ];
 
     function showSlide(n) {
       slideIndex = (n + slides.length) % slides.length;
-      document.getElementById('slide').src = slides[slideIndex].src;
-      document.getElementById('slide').alt = slides[slideIndex].alt;
-      document.getElementById('caption').textContent = slides[slideIndex].caption;
+      const img = document.getElementById('slide');
+      img.classList.remove('active');
+      setTimeout(() => {
+        img.src = slides[slideIndex].src;
+        img.alt = slides[slideIndex].alt;
+        document.getElementById('caption').textContent = slides[slideIndex].caption;
+        img.classList.add('active');
+      }, 50);
     }
 
     function plusSlides(n) {
       showSlide(slideIndex + n);
     }
+
     setInterval(() => {
       plusSlides(1);
     }, 5000);
+
     showSlide(slideIndex);
-    // Visitor counter logic
+
     let visits = localStorage.getItem("teluguVisits") || 0;
     visits++;
     localStorage.setItem("teluguVisits", visits);
     document.getElementById('visitCounter').textContent =
       "స్వాగతం! ఇది మీ " + visits + " సారి సందర్శన.";
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
   </script>
 
 </body>
