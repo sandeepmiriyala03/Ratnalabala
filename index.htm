@@ -1,48 +1,122 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="te">
 <head>
-    <meta charset="UTF-8" />
-    <title>Ratnalabala</title>
-    <style>
-        body {
-            margin: 0;
-            background: #000;
-        }
-        img {
-            width: 100vw;
-            height: 100vh;
-            object-fit: contain;
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ratnalabala</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #6b21a8, #ec4899, #ef4444);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      font-family: sans-serif;
+      flex-direction: column;
+    }
+    .slideshow-container {
+      width: 100%;
+      max-width: 800px;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .slideshow-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .caption {
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      text-align: center;
+      font-size: 1.5rem;
+      padding: 15px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      user-select: none;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .next {
+      right: 10px;
+    }
+    .prev {
+      left: 10px;
+    }
+    .prev:hover, .next:hover {
+      background: rgba(0,0,0,0.8);
+    }
+    .visit-counter {
+      color: white;
+      text-align: center;
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <img src="images/logo.png" alt="logo">
-<img src="images/1.png" alt="1.">
 
-<img src="images/2.png" alt="2.png">
-<img src="images/3.png" alt="3.png">
-<img src="images/4.png" alt="4.png">
-<img src="images/5.png" alt="5.png">
-<img src="images/6.png" alt="6.png">
+  <div class="slideshow-container">
+    <img id="slide" src="images/1.png" alt="రత్నలబాల 1" />
+    <div class="caption" id="caption">ఇది చిత్రం 1 వివరణ</div>
+    <a class="prev" onclick="plusSlides(-1)">❮ Prev</a>
+    <a class="next" onclick="plusSlides(1)">Next ❯</a>
+  </div>
 
+  <div class="visit-counter" id="visitCounter"></div>
 
+  <script>
+    // Slideshow logic
+    let slideIndex = 0;
+    const slides = [
+      { src: 'images/1.png', alt: 'రత్నలబాల 1', caption: 'రత్నలబాల' },
+      { src: 'images/2.png', alt: 'రత్నలబాల 2', caption: 'రత్నలబాల' },
+      { src: 'images/3.png', alt: 'రత్నలబాల 3', caption: 'రత్నలబాల' },
+      { src: 'images/4.png', alt: 'రత్నలబాల 4', caption: 'రత్నలబాల' },
+      { src: 'images/5.png', alt: 'రత్నలబాల 5', caption: 'రత్నలబాల' },
+      { src: 'images/6.png', alt: 'రత్నలబాల 6', caption: 'రత్నలబాల' },
+    ];
 
-    <script>
-        let current = 0;
-        const images = document.querySelectorAll('img');
+    function showSlide(n) {
+      slideIndex = (n + slides.length) % slides.length;
+      document.getElementById('slide').src = slides[slideIndex].src;
+      document.getElementById('slide').alt = slides[slideIndex].alt;
+      document.getElementById('caption').textContent = slides[slideIndex].caption;
+    }
 
-        function showNext() {
-            images.forEach(img => img.style.display = 'none');
-            images[current].style.display = 'block';
-            current = (current + 1) % images.length;
-        }
+    function plusSlides(n) {
+      showSlide(slideIndex + n);
+    }
+    setInterval(() => {
+      plusSlides(1);
+    }, 4000);
+    showSlide(slideIndex);
+    // Visitor counter logic
+    let visits = localStorage.getItem("teluguVisits") || 0;
+    visits++;
+    localStorage.setItem("teluguVisits", visits);
+    document.getElementById('visitCounter').textContent =
+      "స్వాగతం! ఇది మీ " + visits + " సారి సందర్శన.";
+  </script>
 
-        if (images.length > 0) {
-            showNext();
-            setInterval(showNext, 2000);
-        }
-    </script>
 </body>
 </html>
