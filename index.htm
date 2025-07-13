@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="te">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>రత్నాల బాల</title>
-  <meta name="description" content="రత్నాల బాల ఒక తెలుగు డిజిటల్ ప్రాజెక్ట్, వెంకట రత్నం గారి తెలుగు పుస్తకానికి ప్రేరణగా రూపొందించబడింది. GitHub Pages లో హోస్ట్ చేయబడింది.">
-  <meta name="keywords" content="రత్నాల బాల, తెలుగు, డిజిటల్ బుక్, AI, GitHub Pages, తెలుగు సాహిత్యం">
-  <meta name="language" content="te">
+  <title>Ratnalabala</title>
+  <meta name="description" content="Ratnalabala is a digital project inspired by Venkata Ratnam's Telugu poetry, transformed into visuals and music using AI. Hosted on GitHub Pages.">
+  <meta name="keywords" content="Ratnalabala, Telugu Poetry, Digital Book, AI, GitHub Pages, Literature">
+  <meta name="language" content="en">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="రత్నాల బాల">
-  <meta property="og:description" content="రత్నాల బాల ఒక తెలుగు డిజిటల్ ప్రాజెక్ట్, వెంకట రత్నం గారి పుస్తకానికి ప్రేరణతో, GitHub Pages లో హోస్ట్ చేయబడింది.">
+  <meta property="og:title" content="Ratnalabala">
+  <meta property="og:description" content="Ratnalabala is a digital project inspired by Venkata Ratnam's Telugu poetry, transformed into visuals and music using AI. Hosted on GitHub Pages.">
   <meta property="og:image" content="https://sandeepmiriyala03.github.io/Ratnalabala/images/logo.png">
   <meta property="og:url" content="https://sandeepmiriyala03.github.io/Ratnalabala/">
   <meta property="og:type" content="website">
@@ -172,34 +172,36 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <button class="btn" role="button" onclick="toggleDarkMode()" aria-label="డార్క్ మోడ్ టాగిల్">🌙 డార్క్ మోడ్ టాగిల్</button>
+  <button class="btn" role="button" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">🌙 Toggle Dark Mode</button>
 
   <div id="main-content">
 
-    <div class="about">
-      నా పేరు సందీప్ మిరియాల. ఆఫీసు తర్వాత <strong>రత్నాల బాల</strong> ప్రాజెక్ట్ చేస్తున్నాను. 
-      అది నా తాత వెంకట రత్నం గారి తెలుగు పుస్తకం ప్రేరణతో. 
-      AI తో డిజిటల్ చేస్తూ, GitHub Pagesలో వెబ్‌సైట్ హోస్ట్ చేస్తున్నాను.
-    </div>
+<div class="about">
+  <h2>About Me & Project</h2>
+  <p>
+    I’m Sandeep Miriyala, creating <strong>Ratnalabala</strong>—a digital project inspired by my grandfather’s 1983 Telugu poems, transformed into English, cartoons, and video using AI.
+  </p>
+</div>
 
+</div>
     <div class="slideshow-container">
-      <img id="slide" src="images/Book.jpg" alt="రత్నాల బాల పుస్తక కవర్" />
-      <div class="caption" id="caption">రత్నాల బాల</div>
-      <a class="prev" role="button" aria-label="మునుపటి చిత్రానికి వెళ్ళు" onclick="plusSlides(-1)">❮ Prev</a>
-      <a class="next" role="button" aria-label="తదుపరి చిత్రానికి వెళ్ళు" onclick="plusSlides(1)">Next ❯</a>
+      <img id="slide" src="images/Book.jpg" alt="Ratnalabala Book Cover" />
+      <div class="caption" id="caption">Ratnalabala</div>
+      <a class="prev" role="button" aria-label="Go to previous slide" onclick="plusSlides(-1)">❮ Prev</a>
+      <a class="next" role="button" aria-label="Go to next slide" onclick="plusSlides(1)">Next ❯</a>
     </div>
 
     <div>
-      <label for="musicSelect">పాటను ఎంచుకోండి:</label>
-      <select id="musicSelect" aria-label="పాటను ఎంచుకోండి">
-        <option value="Default.mp3" selected>పాట 1</option>
-        <option value="Theme1.mp3">పాట 2</option>
-        <option value="Theme2.mp3">పాట 3</option>
-        <option value="Theme3.mp3">పాట 4</option>
+      <label for="musicSelect">Choose a music track:</label>
+      <select id="musicSelect" aria-label="Choose music track">
+        <option value="Default.mp3" selected>Track 1</option>
+        <option value="Theme1.mp3">Track 2</option>
+        <option value="Theme2.mp3">Track 3</option>
+        <option value="Theme3.mp3">Track 4</option>
       </select>
 
-      <button onclick="playSelectedMusic()" class="btn" role="button" aria-label="మ్యూజిక్ ప్లే చేయి">▶ ప్లే మ్యూజిక్</button>
-      <button onclick="stopMusic()" class="btn" role="button" aria-label="మ్యూజిక్ ఆపు">⏹ స్టాప్ మ్యూజిక్</button>
+      <button onclick="playSelectedMusic()" class="btn" role="button" aria-label="Play music">▶ Play Music</button>
+      <button onclick="stopMusic()" class="btn" role="button" aria-label="Stop music">⏹ Stop Music</button>
     </div>
 
     <audio id="bg-music" loop></audio>
@@ -207,24 +209,24 @@
     <div class="visit-counter" id="visitCounter"></div>
 
     <div class="copyright">
-      © 2025 మిరియాల కుటుంబం. ఈ వెబ్‌సైట్‌లోని కంటెంట్, చిత్రాలు, పాఠ్యము మరియు ఇతర అంశాలు మిరియాల కుటుంబానికి చెందినవి. ఎటువంటి భాగాన్ని మిరియాల కుటుంబ అనుమతి లేకుండా కాపీ చేయరాదు.
+      © 2025 Miriyala Family. All content, images, text, and other elements on this website belong to the Miriyala family. No part may be copied without permission.
     </div>
 
   </div>
 
-  <button onclick="topFunction()" id="topBtn" title="మళ్లీ పైకి వెళ్ళు" aria-label="మళ్లీ పైకి వెళ్ళు">🔝 Top</button>
+  <button onclick="topFunction()" id="topBtn" title="Go to top" aria-label="Go to top">🔝 Top</button>
 
   <script>
     let slideIndex = 0;
     const slides = [
-      { src: 'images/logo.png', alt: 'రత్నాల బాల లోగో', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/1.png', alt: 'రత్నాల బాల చిత్రం 1', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/2.png', alt: 'రత్నాల బాల చిత్రం 2', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/3.png', alt: 'రత్నాల బాల చిత్రం 3', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/4.png', alt: 'రత్నాల బాల చిత్రం 4', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/5.png', alt: 'రత్నాల బాల చిత్రం 5', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/6.png', alt: 'రత్నాల బాల చిత్రం 6', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/Book.jpg', alt: 'రత్నాల బాల పుస్తక కవర్', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' }
+      { src: 'images/logo.png', alt: 'Ratnalabala Logo', caption: 'Padyalavala Bhavala Mala Ratnalabala' },
+      { src: 'images/1.png', alt: 'Ratnalabala Image 1', caption: 'Padyalavala Bhavala Mala Ratnalabala' },
+      { src: 'images/2.png', alt: 'Ratnalabala Image 2', caption: 'Padyalavala Bhavala Mala Ratnalabala' },
+      { src: 'images/3.png', alt: 'Ratnalabala Image 3', caption: 'Padyalavala Bhavala Mala Ratnalabala' },
+      { src: 'images/4.png', alt: 'Ratnalabala Image 4', caption: 'Padyalavala Bhavala Mala Ratnalabala' },
+      { src: 'images/5.png', alt: 'Ratnalabala Image 5', caption: 'Padyalavala Bhavala Mala Ratnalabala' },
+      { src: 'images/6.png', alt: 'Ratnalabala Image 6', caption: 'Padyalavala Bhavala Mala Ratnalabala' },
+      { src: 'images/Book.jpg', alt: 'Ratnalabala Book Cover', caption: 'Padyalavala Bhavala Mala Ratnalabala' }
     ];
 
     function showSlide(n) {
@@ -249,11 +251,11 @@
 
     showSlide(slideIndex);
 
-    let visits = localStorage.getItem("teluguVisits") || 0;
+    let visits = localStorage.getItem("englishVisits") || 0;
     visits++;
-    localStorage.setItem("teluguVisits", visits);
+    localStorage.setItem("englishVisits", visits);
     document.getElementById('visitCounter').textContent =
-      "స్వాగతం! ఇది మీ " + visits + " సారి సందర్శన.";
+      "Welcome! This is your " + visits + "th visit.";
 
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
@@ -294,9 +296,8 @@
       const selectedFile = document.getElementById('musicSelect').value;
       audio.src = selectedFile;
       audio.volume = 0.2;
-      // attempt to autoplay:
-      audio.play().catch(function(e){
-        console.log("Autoplay was prevented. User interaction required.");
+      audio.play().catch(() => {
+        console.log("Autoplay prevented. User interaction required.");
       });
     });
   </script>
