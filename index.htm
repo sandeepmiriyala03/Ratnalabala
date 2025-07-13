@@ -32,6 +32,20 @@
       background: #111;
       color: #eee;
     }
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #ffd700;
+      color: #000;
+      padding: 8px;
+      z-index: 100;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .skip-link:focus {
+      top: 10px;
+    }
     .about {
       max-width: 800px;
       background: rgba(0,0,0,0.5);
@@ -122,8 +136,10 @@
       font-size: 1rem;
       transition: background 0.3s;
     }
-    .btn:hover {
+    .btn:hover, .btn:focus {
       background: #e2b607;
+      outline: 3px solid #fff;
+      outline-offset: 2px;
     }
     select {
       padding: 10px;
@@ -150,78 +166,50 @@
     #topBtn:hover {
       background-color: #e2b607;
     }
-    @media (max-width: 600px) {
-      .about {
-        font-size: 1.1rem;
-        padding: 15px;
-      }
-      .caption {
-        font-size: 1.2rem;
-        padding: 10px;
-      }
-      .prev, .next {
-        font-size: 16px;
-        padding: 10px;
-      }
-      .btn {
-        font-size: 0.9rem;
-        padding: 8px 15px;
-      }
-      select {
-        font-size: 0.9rem;
-        padding: 8px;
-      }
-      #topBtn {
-        font-size: 16px;
-        padding: 10px;
-      }
-      .visit-counter {
-        font-size: 1.2em;
-      }
-      .copyright {
-        font-size: 0.8rem;
-        padding: 8px;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <button class="btn" onclick="toggleDarkMode()" aria-label="డార్క్ మోడ్ టాగిల్">🌙 డార్క్ మోడ్ టాగిల్</button>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <div class="about">
-    నా పేరు సందీప్ మిరియాల. ఆఫీసు తర్వాత <strong>రత్నాల బాల</strong> ప్రాజెక్ట్ చేస్తున్నాను. 
-    అది నా తాత వెంకట రత్నం గారి తెలుగు పుస్తకం ప్రేరణతో. 
-    AI తో డిజిటల్ చేస్తూ, GitHub Pagesలో వెబ్‌సైట్ హోస్ట్ చేస్తున్నాను.
-  </div>
+  <button class="btn" role="button" onclick="toggleDarkMode()" aria-label="డార్క్ మోడ్ టాగిల్">🌙 డార్క్ మోడ్ టాగిల్</button>
 
-  <div class="slideshow-container">
-    <img id="slide" src="images/Book.jpg" alt="రత్నాల బాల" />
-    <div class="caption" id="caption">రత్నాల బాల</div>
-    <a class="prev" onclick="plusSlides(-1)" aria-label="మునుపటి చిత్రానికి వెళ్ళు">❮ Prev</a>
-    <a class="next" onclick="plusSlides(1)" aria-label="తదుపరి చిత్రానికి వెళ్ళు">Next ❯</a>
-  </div>
+  <div id="main-content">
 
-  <div>
-    <label for="musicSelect">పాటను ఎంచుకోండి:</label>
-    <select id="musicSelect" aria-label="పాటను ఎంచుకోండి">
-      <option value="Default.mp3" selected>పాట 1</option>
-      <option value="Theme1.mp3">పాట 2</option>
-      <option value="Theme2.mp3">పాట 3</option>
-      <option value="Theme3.mp3">పాట 4</option>
-      
-    </select>
+    <div class="about">
+      నా పేరు సందీప్ మిరియాల. ఆఫీసు తర్వాత <strong>రత్నాల బాల</strong> ప్రాజెక్ట్ చేస్తున్నాను. 
+      అది నా తాత వెంకట రత్నం గారి తెలుగు పుస్తకం ప్రేరణతో. 
+      AI తో డిజిటల్ చేస్తూ, GitHub Pagesలో వెబ్‌సైట్ హోస్ట్ చేస్తున్నాను.
+    </div>
 
-    <button onclick="playSelectedMusic()" class="btn" aria-label="మ్యూజిక్ ప్లే చేయి">▶ ప్లే మ్యూజిక్</button>
-    <button onclick="stopMusic()" class="btn" aria-label="మ్యూజిక్ ఆపు">⏹ స్టాప్ మ్యూజిక్</button>
-  </div>
+    <div class="slideshow-container">
+      <img id="slide" src="images/Book.jpg" alt="రత్నాల బాల పుస్తక కవర్" />
+      <div class="caption" id="caption">రత్నాల బాల</div>
+      <a class="prev" role="button" aria-label="మునుపటి చిత్రానికి వెళ్ళు" onclick="plusSlides(-1)">❮ Prev</a>
+      <a class="next" role="button" aria-label="తదుపరి చిత్రానికి వెళ్ళు" onclick="plusSlides(1)">Next ❯</a>
+    </div>
 
-  <audio id="bg-music" loop></audio>
+    <div>
+      <label for="musicSelect">పాటను ఎంచుకోండి:</label>
+      <select id="musicSelect" aria-label="పాటను ఎంచుకోండి">
+        <option value="Default.mp3" selected>పాట 1</option>
+        <option value="Theme1.mp3">పాట 2</option>
+        <option value="Theme2.mp3">పాట 3</option>
+        <option value="Theme3.mp3">పాట 4</option>
+      </select>
 
-  <div class="visit-counter" id="visitCounter"></div>
+      <button onclick="playSelectedMusic()" class="btn" role="button" aria-label="మ్యూజిక్ ప్లే చేయి">▶ ప్లే మ్యూజిక్</button>
+      <button onclick="stopMusic()" class="btn" role="button" aria-label="మ్యూజిక్ ఆపు">⏹ స్టాప్ మ్యూజిక్</button>
+    </div>
 
-  <div class="copyright">
-    © 2025 మిరియాల కుటుంబం. ఈ వెబ్‌సైట్‌లోని కంటెంట్, చిత్రాలు, పాఠ్యము మరియు ఇతర అంశాలు మిరియాల కుటుంబానికి చెందినవి. ఎటువంటి భాగాన్ని మిరియాల కుటుంబ అనుమతి లేకుండా కాపీ చేయరాదు.
+    <audio id="bg-music" loop></audio>
+
+    <div class="visit-counter" id="visitCounter"></div>
+
+    <div class="copyright">
+      © 2025 మిరియాల కుటుంబం. ఈ వెబ్‌సైట్‌లోని కంటెంట్, చిత్రాలు, పాఠ్యము మరియు ఇతర అంశాలు మిరియాల కుటుంబానికి చెందినవి. ఎటువంటి భాగాన్ని మిరియాల కుటుంబ అనుమతి లేకుండా కాపీ చేయరాదు.
+    </div>
+
   </div>
 
   <button onclick="topFunction()" id="topBtn" title="మళ్లీ పైకి వెళ్ళు" aria-label="మళ్లీ పైకి వెళ్ళు">🔝 Top</button>
@@ -229,14 +217,14 @@
   <script>
     let slideIndex = 0;
     const slides = [
-      { src: 'images/logo.png', alt: 'రత్నాల బాల', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/1.png', alt: 'రత్నాల బాల 1', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/2.png', alt: 'రత్నాల బాల 2', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/3.png', alt: 'రత్నాల బాల 3', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/4.png', alt: 'రత్నాల బాల 4', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/5.png', alt: 'రత్నాల బాల 5', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/6.png', alt: 'రత్నాల బాల 6', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
-      { src: 'images/Book.jpg', alt: 'రత్నాల బాల ', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' }
+      { src: 'images/logo.png', alt: 'రత్నాల బాల లోగో', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
+      { src: 'images/1.png', alt: 'రత్నాల బాల చిత్రం 1', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
+      { src: 'images/2.png', alt: 'రత్నాల బాల చిత్రం 2', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
+      { src: 'images/3.png', alt: 'రత్నాల బాల చిత్రం 3', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
+      { src: 'images/4.png', alt: 'రత్నాల బాల చిత్రం 4', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
+      { src: 'images/5.png', alt: 'రత్నాల బాల చిత్రం 5', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
+      { src: 'images/6.png', alt: 'రత్నాల బాల చిత్రం 6', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' },
+      { src: 'images/Book.jpg', alt: 'రత్నాల బాల పుస్తక కవర్', caption: 'పద్యాలవాల భావాల మాల రత్నాల బాల' }
     ];
 
     function showSlide(n) {
@@ -275,7 +263,7 @@
       const audio = document.getElementById('bg-music');
       const selectedFile = document.getElementById('musicSelect').value;
       audio.src = selectedFile;
-      audio.volume = 0.4; // lower volume
+      audio.volume = 0.2;
       audio.play();
     }
 
@@ -301,9 +289,15 @@
       document.documentElement.scrollTop = 0;
     }
 
-    // Set default music initially
     document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById('bg-music').src = document.getElementById('musicSelect').value;
+      const audio = document.getElementById('bg-music');
+      const selectedFile = document.getElementById('musicSelect').value;
+      audio.src = selectedFile;
+      audio.volume = 0.2;
+      // attempt to autoplay:
+      audio.play().catch(function(e){
+        console.log("Autoplay was prevented. User interaction required.");
+      });
     });
   </script>
 
