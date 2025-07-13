@@ -118,7 +118,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 15px;
+      margin: 10px 5px;
       font-size: 1rem;
       transition: background 0.3s;
     }
@@ -169,6 +169,16 @@
     <a class="next" onclick="plusSlides(1)">Next ❯</a>
   </div>
 
+  <div>
+    <button onclick="playMusic()" class="btn">🎵 Play Background Music</button>
+    <button onclick="stopMusic()" class="btn">🛑 Stop Background Music</button>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="music/background.mp3" type="audio/mpeg">
+    మీ బ్రౌజర్ ఆడియోను మద్దతు ఇవ్వదు.
+  </audio>
+
   <div class="visit-counter" id="visitCounter"></div>
 
   <div class="copyright">
@@ -218,6 +228,18 @@
 
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
+    }
+
+    function playMusic() {
+      const audio = document.getElementById('bg-music');
+      audio.volume = 0.2; // lower volume
+      audio.play();
+    }
+
+    function stopMusic() {
+      const audio = document.getElementById('bg-music');
+      audio.pause();
+      audio.currentTime = 0;
     }
   </script>
 
